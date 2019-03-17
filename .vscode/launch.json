@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "run(tomcat)",
+            "request": "launch",
+            "mainClass": "com.fan.assistant.DemoApplication",
+            "projectName": "assistant"
+        }
+    ]
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <typeAlias type="com.fan.assistant.entity.User" alias="user" />
+        <typeAlias type="com.fan.assistant.entity.goal" alias="goal" />
+        <typeAlias type="com.fan.assistant.entity.task" alias="task" />
+        <typeAlias type="com.fan.assistant.entity.task_time" alias="task_time" />
+    </typeAliases>
+
+    <mappers>
+        <mapper resource="com/fan/assistant/Dao/mapper.xml" />
+    </mappers>
+</configuration>

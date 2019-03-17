@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.fan.assistant.Dao.mapper">
+    <select id="isExist" resultType="user">
+        select * from User where user_name = #{param0}
+    </select>
+    <insert id="regin" useGeneratedKeys="true">
+        insert into User (user_name,user_pass,nickname,birthday,question1,Answer1,question2,Answer2,phone,avatar,regin_date)
+        values (#{user_name},#{user_pass},#{nickname},#{birthday},#{question1},#{Answer1},#{question2},#{Answer2},#{phone},#{avatar},#{regin_date})
+    </insert>
+    <select id="login" resultType="user">
+        select * from User Where user_name = #{param1} and user_pass= #{param2}
+    </select>
+    <update id="UpdatePassword">
+        update User set user_pass = #{param1} where user_name=#{param0}
+    </update>
+
+    <select id="getQuestion" resultType="user">
+        select question1,Answer1,question2,Answer2 from user where user_name = #{param0}
+    </select>
+
+    <insert id="addGoal" useGeneratedKeys="true" parameterType="goal">
+        insert into goal (goal_name,goal_intro,goal_startTime,goal_endTime,goal_backImage,goal_userId,goal_mark,goal_state)
+        values (#{goal_name},#{goal_intro},#{goal_startTime},#{goal_endTime},#{goal_backImage},#{goal_userId},#{goal_mark},#{goal_state})
+    </insert>
+
+    <select id="getGoals" resultType="goal">
+        select * from goal where goal_userId = #{param0} order by goal_userId desc
+    </select>
+
+    <delete id="deleteGoal">
+        delete from goal where goal_id = #{param0}
+    </delete>
+
+    <insert id="addTask" useGeneratedKeys="true" parameterType="task">
+        insert into task (task_name,task_intro,goal_id,goal_name,task_repeat)
+        values (#{task_name},#{task_intro},#{goal_id},#{goal_name},#{task_repeat})
+    </insert>
+
+    <select id="getTasks" resultType="task">
+        select * from task whe re goal_id = #{param0}
+    </select>
+
+    <delete id="deleteTask">
+        delete from task where task_id = #{param0}
+    </delete>
+
+    <insert id="addTask_Time" useGeneratedKeys="true" parameterType="task_time">
+        insert into task_time (task_id,task_startTime,)
+        values (#{time_id},#{task_startTime},#{task_endTime})
+    </insert>
+
+    <select id="getTask_Time" resultType="task_time">
+        select * from task_time where task_id = #{param0}
+    </select>
+
+    <delete id="deleteTask_Time">
+        delete from task_time where time_id = #{param0}
+    </delete>
+</mapper>
